@@ -1,10 +1,11 @@
+import { SignUp } from '@clerk/nextjs'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      sign-up
-    </div>
+    <main className='flex h-screen w-full items-center justify-center'>
+      <SignUp/>
+    </main>
   )
 }
 
