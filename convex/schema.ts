@@ -3,6 +3,7 @@ import {v} from 'convex/values';
 
 
 export default defineSchema({
+
     users: defineTable({
      name: v.string(),
      email: v.string(),
@@ -18,14 +19,14 @@ export default defineSchema({
             exercises: v.array(v.object({
                  day: v.string(),
                  routines: v.array(v.object({
-                    name: v.string(),
-                    sets: v.optional(v.number()),
-                    reps: v.optional(v.number()),
-                    duration: v.optional(v.string()),
-                    description: v.optional(v.string()),
-                    exercises: v.optional(v.array(v.string())),
-                 }))
-            }))
+                     name: v.string(),
+                     sets: v.optional(v.number()),
+                     reps: v.optional(v.number()),
+                     duration: v.optional(v.string()),
+                     description: v.optional(v.string()),
+                     exercises: v.optional(v.array(v.string())),
+                 })),
+            })),
         }),
 
         dietPlan: v.object({
@@ -37,8 +38,5 @@ export default defineSchema({
         }),
         isActive: v.boolean(),
     }).index("by_user_id", ["userId"]).index("by_active", ["isActive"]),
-    
-    
-
 
 })
