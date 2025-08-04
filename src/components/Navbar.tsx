@@ -1,8 +1,9 @@
 "use client"
-import { useUser } from '@clerk/nextjs'
-import { DumbbellIcon, HomeIcon, ZapIcon } from 'lucide-react'
+import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
+import { DumbbellIcon, HomeIcon, UserIcon, ZapIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from './ui/button'
 
 const Navbar = () => {
     const {isSignedIn} = useUser()
@@ -30,8 +31,28 @@ const Navbar = () => {
               <DumbbellIcon size={16}/>
               <span>Generate</span>
              </Link>
+
+             <Link href="/profile" className='flex items-center gap-1.5 text-sm hover:text-primary transition-colors'>
+              <UserIcon size={16}/>
+              <span>Profile</span>
+             </Link>
+
+             <Button asChild variant="outline" className="mt-2 border-primary/50 text-primary hover:text-white hover:bg-primary/10">
+              <Link href="/generate-program">Get Started</Link>
+             </Button>
+             <UserButton/>
             </>
-           ) : " "}
+           ) : (
+            <>
+             <SignInButton>
+              <Button variant={"outline"} className='border-primary/50 text-primary hover:text-white hover:bg-primary/10'>Login</Button>
+             </SignInButton>
+
+             <SignUpButton>
+              <Button variant={"outline"} className='bg-primary text-primary-foreground hover:bg-primary/90'>Register</Button>
+             </SignUpButton>
+            </>
+           )}
          </nav>
        </div>
     </header>
