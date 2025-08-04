@@ -1,9 +1,10 @@
-
+"use client"
 import { Button } from '@/components/ui/button'
 import  Link from 'next/link'
 import {  ArrowRightIcon } from 'lucide-react'
 import React from 'react'
 import TerminalOverlay from '@/components/ui/TerminalOverlay'
+import UserPrograms from '@/components/ui/UserPrograms'
 
 const HomePage = () => {
   return (
@@ -95,13 +96,28 @@ const HomePage = () => {
 
                   <div className='absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent'/>
                     {/**terminal overlay */}
-                <TerminalOverlay/> 
+                <TerminalOverlay/>
                 </div>
+                {/**
+                <div className='lg:col-span-7 space-y-8 relative flex items-center'>
+                  <Carousel orientation='horizontal' setApi={setApi}>
+                    <CarouselContent className='-ml-2 md:-ml-4'>
+                         <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                          <Image src="/carousel1.jpg" alt="table-1" width={100} height={100}/>
+                         </CarouselItem>
+                          <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">...</CarouselItem>
+                           <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">...</CarouselItem>
+                    </CarouselContent>
+                  </Carousel>
+                </div>
+                */}
+                
               
-               
            </div>
         </div>
       </section>
+
+      <UserPrograms/>
     </div>
   )
 }
