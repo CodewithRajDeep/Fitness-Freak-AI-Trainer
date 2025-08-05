@@ -49,7 +49,7 @@ const UserPrograms = () => {
               </div>
               <div className="w-px h-12 bg-border"></div>
               <div className="flex flex-col items-center">
-                <p className="text-3xl text-primary">3min</p>
+                <p className="text-3xl text-primary">2min</p>
                 <p className="text-sm text-muted-foreground uppercase tracking-wide mt-1">
                   CREATION TIME
                 </p>
