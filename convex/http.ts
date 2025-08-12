@@ -237,8 +237,6 @@ http.route({
           headers: { "Content-Type": "application/json" },
         }
       );
-    
-
         } catch (error) {
             console.log("Error creating the plan", error)
             return new Response(
