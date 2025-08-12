@@ -41,6 +41,7 @@ export const createPlan = mutation({
        for(const plan of activePlans){
         await context.db.patch(plan._id, { isActive: false});
        }
-       await context.db.insert("plans", args)
+       const planId = await context.db.insert("plans", args)
+       return planId;
     }
 })
