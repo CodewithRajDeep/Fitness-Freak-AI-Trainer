@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 
 export const createPlan = mutation({
@@ -44,4 +44,17 @@ export const createPlan = mutation({
        const planId = await context.db.insert("plans", args)
        return planId;
     }
-})
+});
+
+export const getUserPlans = query({
+  args:{
+    userId: v.string()
+  },
+  handler: async(isContext,args) => {
+    const plans = await isContext.db.query("plans").withIndex("by_user_id", q => q.eq("userId", args.userId))
+    .order("desc")
+    .collect()
+
+    return plans
+  }
+});
