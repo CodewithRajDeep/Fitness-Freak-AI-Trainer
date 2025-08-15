@@ -63,6 +63,22 @@ http.route({
             }
 
         }
+        if(eventType === "user.updated") {
+          const {id, email_addresses, first_name, last_name, image_url} = evt.data;
+          const email = email_addresses[0].email_address;
+          const name = `${first_name || " "} ${last_name || ""}`.trim();
+          try {
+            await context.runMutation(api.users.updateUser, {
+              email,
+              name,
+              image: image_url,
+              clerkId: id,
+            });
+          } catch (error) {
+            console.log("Error updating user:", error);
+            return new Response("Error updating user", {status: 500});
+          }
+        }
         console.log(evt.data.id);
         return new Response("Web hook processed successfully", { status: 200});
 
@@ -514,7 +530,7 @@ Swapping meat-based meals for plant-based
 
 Adding home-friendly exercise options
 
-Knowledge Base: 
+Knowledge Base:
 
 - Workout Types: 
 Strength Training: Progressive overload, hypertrophy, functional training
